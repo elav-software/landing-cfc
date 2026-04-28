@@ -84,7 +84,7 @@ document.getElementById("soy-nuevo-form").addEventListener("submit", async funct
   btn.disabled = true;
   btn.textContent = "Enviando...";
   try {
-    const res = await fetch("https://www.cfccasanova.com/api/soy-nuevo", {
+    const res = await fetch("https://crm.cfccasanova.com/api/soy-nuevo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

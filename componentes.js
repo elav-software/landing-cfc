@@ -19,7 +19,7 @@ const menuHTML = `
             <li><a href="/contacto.html">Contacto</a></li>
             
             <li class="btn-mobile-item">
-                <a href="https://www.cfccasanova.com/connect/portal/login" class="btn-cta">Portal CFC</a>
+                <a href="https://crm.cfccasanova.com/connect/portal/login" class="btn-cta">Portal CFC</a>
             </li>
         </ul>
     </nav>

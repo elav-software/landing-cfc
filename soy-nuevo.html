@@ -45,7 +45,7 @@
 						<h2>¡Nos encantaría conocerte!</h2>
 						<p>Dejanos tus datos y un miembro de nuestra familia te escribirá.</p>
 						
-						<form action="#" method="POST">
+						<form id="soy-nuevo-form">
 							<input type="text" name="nombre" placeholder="Nombre y Apellido" required>
 							<input type="text" name="tel" placeholder="WhatsApp / Teléfono" required>
 							<input type="text" name="barrio" placeholder="Barrio / Localidad" required>
@@ -76,5 +76,39 @@
 	<div id="footer-contenedor"></div>
 
 	<script src="./componentes.js"></script>
+<script>
+document.getElementById("soy-nuevo-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const f = e.target;
+  const btn = f.querySelector("button");
+  btn.disabled = true;
+  btn.textContent = "Enviando...";
+  try {
+    const res = await fetch("https://www.cfccasanova.com/api/soy-nuevo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: f.nombre.value,
+        telefono: f.tel.value,
+        barrio: f.barrio.value,
+        edad: f.edad.value,
+        estado_civil: f.estado.value,
+        church_slug: "cfc"
+      })
+    });
+    if (res.ok) {
+      f.innerHTML = "<p style=\"text-align:center;color:#22c55e;font-size:1.2rem;padding:20px\">\u00a1Gracias! Te contactaremos pronto \ud83d\ude4f</p>";
+    } else {
+      btn.disabled = false;
+      btn.textContent = "Quiero que me llamen!";
+      alert("Hubo un error. Intentá de nuevo.");
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = "Quiero que me llamen!";
+    alert("Hubo un error. Intentá de nuevo.");
+  }
+});
+</script>
 </body>
 </html>

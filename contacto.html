@@ -53,7 +53,7 @@
 					document.getElementById('oracion-exito').style.display = 'none';
 					document.getElementById('oracion-error').style.display = 'none';
 					try {
-						var res = await fetch('/api/oracion', {
+						var res = await fetch('https://www.cfccasanova.com/api/oracion', {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/json' },
 							body: JSON.stringify({
